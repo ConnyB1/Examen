@@ -294,7 +294,6 @@ void generarArchivo(reg registros[], int n)
 
 void gen_Arch_bin(reg registros[], int n)
 {
-    reg rege;
     FILE *fa = fopen("C:\\Users\\costco\\Documents\\Programacion estructurada\\EXAMEN\\ARCHIVOBIN.tmp", "ab");
 
     for (int i = 0; i < n; i++)
