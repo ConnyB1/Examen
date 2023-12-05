@@ -75,6 +75,7 @@ int main()
                     if (op == 4)
                     {
                         moda(registros, n);
+                        
                     }
                     else
                     {
@@ -222,11 +223,11 @@ void mediana(reg registros[], int n)
     float mediana;
     if (n % 2 == 0) 
     {
-        mediana = (registros[n / 2 - 1].tiempo + registros[n / 2].tiempo) / 2.0;
+        mediana = (registros[n/2-1].tiempo + registros[n/2].tiempo) / 2;
     } 
     else 
     {
-        mediana = registros[n / 2].tiempo;
+        mediana = registros[n/2].tiempo;
     }
 
     printf("La mediana es: %.2f\n", mediana);
@@ -286,6 +287,7 @@ void generarArchivo(reg registros[], int n)
         {
             fprintf(archivo, "%d\n", registros[i].tiempo);
         }
+        fprintf(archivo, "\nmedia: %d\n", media(registros, n));
     fclose(archivo);
     printf("\n\nArchivo generado\n");
 }
