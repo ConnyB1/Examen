@@ -299,7 +299,7 @@ void gen_Arch_bin(reg registros[], int n)
 
     for (int i = 0; i < n; i++)
     {
-        rege = registros[i]; //no lei que era de los registros de calculos
+        
     }
     fclose(fa);
 }
