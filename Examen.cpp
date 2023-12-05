@@ -21,8 +21,8 @@ void gen_Arch_bin(reg registros[], int n);
 
 int main()
 {
-    int op, n = 0;
-    
+    int op, n = 0, vali;
+    char num[10];
     do
     {
         printf("\tMenu\n ");
@@ -37,8 +37,19 @@ int main()
         printf("9.- Generar archivo binario\n"); //reg calculos
         printf("10.- Imprimir archivo Binario\n");
         printf("0.- Salir\n\n");
- 
-        scanf("%d",&op);
+        
+        do
+        {
+            fgets(num, sizeof(num), stdin);
+            op = atoi(num);  
+            if (op < 0 || op > 10)  
+            {
+                printf("Tiene que estar entre 0 y 10\n");  
+                vali = 1;
+            }
+        } while (vali == 1);
+        
+        
         
 
         if (op == 1)
@@ -118,13 +129,42 @@ int main()
 
 void cargar(reg registros[], int *n)
 {
-    FILE *fa = fopen("C://Users//costco//Documents//Programacion estructurada//Examen/ensamble.txt", "r");
+    char num[20];
+    int op, vali;
+    do
+    {
+        printf("cual quieres cargar? 1)esambre 2)tiempos");
+        fgets(num, sizeof(num), stdin);
+        op = atoi(num);  
+        if (op < 1 || op > 2)  
+        {
+            printf("Tiene que estar entre 1 y 2\n");  
+            vali = 1;
+        }
+    } while (vali == 1);
+    if (op == 1)
+    {
+        FILE *fa = fopen("C://Users//costco//Documents//Programacion estructurada//Examen/ensamble.txt", "r");
+        while ((*n < 100) && (fscanf(fa, "%d", &registros[*n].tiempo) == 1)) 
+        {
+            (*n)++;
+        }
 
-    while ((*n < 100) && (fscanf(fa, "%d", &registros[*n].tiempo) == 1)) {
-        (*n)++;
+        fclose(fa);
     }
+    else
+    {
+        FILE *fa = fopen("C://Users//costco//Documents//Programacion estructurada//Examen/tiempos_5k_teem_potros.txt", "r");
+        while ((*n < 100) && (fscanf(fa, "%d", &registros[*n].tiempo) == 1)) 
+        {
+            (*n)++;
+        }
+        fclose(fa);
+    }
+    
+    
 
-    fclose(fa);
+    
 }
 
 void imprimir(reg registros[], int n) 
